@@ -48,7 +48,9 @@ if (isset($_SESSION["username"])) {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="assets/css/dashboard.css">
+            <link rel="stylesheet" href="assets/css/main.css">
+            <link rel="stylesheet" href="assets/css/sidebar.css">
+            <link rel="stylesheet" href="assets/css/navbar.css">
             <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
             <link rel="shortcut icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
             <title><?php echo ucfirst($page_name) ?></title>

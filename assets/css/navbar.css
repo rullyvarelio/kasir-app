@@ -1,0 +1,39 @@
+@import url("main.css");
+
+nav {
+  background: var(--light);
+  height: 64px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 28px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+nav .toggle-sidebar {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+nav .profile {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+nav .profile p {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+nav .profile img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}

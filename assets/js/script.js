@@ -41,10 +41,9 @@ sidebar.addEventListener("mouseenter", function () {
   }
 });
 
-// PROFILE DROPDOWN
-const profile = document.querySelector("nav .profile");
-const imgProfile = profile.querySelector("img");
+const profile = document.querySelector("nav, .profile");
 const dropdownProfile = profile.querySelector(".profile-link");
+const imgProfile = profile.querySelector("img");
 
 imgProfile.addEventListener("click", function () {
   dropdownProfile.classList.toggle("show");
@@ -58,4 +57,21 @@ window.addEventListener("click", function (e) {
       }
     }
   }
+});
+
+const moreIcons = document.querySelectorAll(".more-ic");
+moreIcons.forEach(function (icon) {
+  const dropdown = icon.parentElement.querySelector(".more-link");
+
+  icon.addEventListener("click", function (e) {
+    e.stopPropagation(); // Prevent event from bubbling to the window
+    dropdown.classList.toggle("show");
+  });
+
+  // Close the dropdown if clicking outside
+  window.addEventListener("click", function (e) {
+    if (e.target !== icon && e.target !== dropdown) {
+      dropdown.classList.remove("show");
+    }
+  });
 });
