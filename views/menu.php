@@ -9,8 +9,10 @@ $current_page = basename($_SERVER["PHP_SELF"]); //WITH EXTENSION (.php)
 $page_name = pathinfo($current_page, PATHINFO_FILENAME); //WITHOUT EXTENSION
 
 // UNSET SESSION
-if (isset($_SESSION["edit_menu"]) || isset($_SESSION["add_stok"])) {
+if (isset($_SESSION["edit_menu"])) {
     unset($_SESSION["edit_menu"]);
+}
+if (isset($_SESSION["add_stok"])) {
     unset($_SESSION["add_stok"]);
 }
 
@@ -53,7 +55,7 @@ if (isset($_SESSION["username"])) {
                     <div class="menu-head">
                         <h1 class="title"><?php echo $page_name ?></h1>
 
-                        <?php if ($r['id_role'] == 1) { ?>
+                        <?php if ($r["id_role"] == 1) { ?>
                             <a href="menu/create.php">
                                 <button>Tambah menu</button>
                             </a>

@@ -122,7 +122,7 @@ main .title {
 main .info-data {
   margin-top: 36px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 20px;
   justify-content: center;
 }
@@ -285,8 +285,19 @@ main .menu-head a > button:active {
 .info-data.center {
   align-items: center;
 }
-
-.card.menu {
-  align-items: center;
-}
 /* Menu.php */
+
+/* Karyawan.php */
+.user-data {
+  margin-top: 36px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  background: var(--light);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-direction: column;
+}
+/* Karyawan.php */

@@ -29,9 +29,10 @@ if (isset($_SESSION["username"])) {
         <body>
             <!-- CONTENT -->
             <div class="container">
+
                 <div class="crud">
                     <h1>Tambah menu</h1>
-                    <form action="/kasir/controllers/crudControllers.php" method="post" enctype="multipart/form-data">
+                    <form action="/kasir/controllers/menuControllers.php" method="post" enctype="multipart/form-data">
                         <div class="input-group">
                             <label for="nama_menu">Nama menu</label>
                             <input type="text" name="nama_menu" class="input-field">
@@ -55,9 +56,9 @@ if (isset($_SESSION["username"])) {
                         </div>
                     </form>
                 </div>
+
             </div>
             <!-- CONTENT -->
-
 
             <script type="text/javascript">
                 function restrictAlphabet(e) {
@@ -102,7 +103,7 @@ if (isset($_SESSION["username"])) {
         </html>
 <?php }
 } else {
-    header("location: keluar.php");
+    header("location: /kasir/keluar.php");
 }
 ob_flush();
 ?>

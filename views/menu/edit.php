@@ -3,13 +3,12 @@ include "/xampp/htdocs/kasir/config/database.php";
 session_start();
 ob_start();
 
-$id = $_SESSION["id_user"];
-
 $direktori = "/kasir/assets/img/menu/";
+$id_user = $_SESSION["id_user"];
 
 if (isset($_SESSION["username"])) {
 
-    $query = "SELECT * FROM user NATURAL JOIN role WHERE id_user = $id";
+    $query = "SELECT * FROM user JOIN role WHERE id_user = $id_user";
     $sql = mysqli_query($koneksi, $query);
 
     if (isset($_SESSION["edit_menu"])) {
@@ -19,11 +18,18 @@ if (isset($_SESSION["username"])) {
         $sql_edit = mysqli_query($koneksi, $query_edit);
         $result_edit = mysqli_fetch_array($sql_edit);
 
-        $id_menu = $result_edit['id_menu'];
-        $nama_menu = $result_edit['nama_menu'];
-        $harga = $result_edit['harga'];
-        $stok = $result_edit['stok'];
-        $gambar_menu = $direktori . $result_edit['gambar_menu'];
+        $id_menu = $result_edit["id_menu"];
+        $nama_menu = $result_edit["nama_menu"];
+        $harga = $result_edit["harga"];
+        $stok = $result_edit["stok"];
+        $gambar_menu = $direktori . $result_edit["gambar_menu"];
+    }
+
+    if (isset($_SESSION["add_stok"])) {
+        $id = $_SESSION["add_stok"];
+        $query_stok = "SELECT * FROM menu WHERE id_menu = $id";
+        $sql_stok = mysqli_query($koneksi, $query_stok);
+        $result_stok = mysqli_fetch_array($sql_stok);
     }
 
     while ($r = mysqli_fetch_array($sql)) {
@@ -37,16 +43,16 @@ if (isset($_SESSION["username"])) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="stylesheet" href="/kasir/assets/css/crud.css">
             <link rel="shortcut icon" href="/kasir/assets/img/favicon/favicon.ico" type="image/x-icon">
-            <title>Buat menu</title>
+            <title>Update menu</title>
         </head>
 
         <body>
             <!-- CONTENT -->
             <div class="container">
                 <div class="crud">
-                    <?php if ($r['id_role'] == 1) { ?>
+                    <?php if (isset($_SESSION["edit_menu"])) { ?>
                         <h1>Update menu</h1>
-                        <form action="/kasir/controllers/crudControllers.php" method="post" enctype="multipart/form-data">
+                        <form action="/kasir/controllers/menuControllers.php" method="post" enctype="multipart/form-data">
                             <div class="input-group">
                                 <label for="nama_menu">Nama menu</label>
                                 <input type="text" name="nama_menu" class="input-field" value="<?php echo $nama_menu ?>">
@@ -69,6 +75,31 @@ if (isset($_SESSION["username"])) {
                                 <input type="submit" name="batal_menu" value="Batalkan">
                             </div>
                         </form>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["add_stok"])) { ?>
+                        <div class="container">
+                            <div class="crud">
+                                <h1>Update stok</h1>
+                                <form action="/kasir/controllers/menuControllers.php" method="post" enctype="multipart/form-data">
+                                    <div class="input-group">
+                                        <label for="nama_menu">Nama menu</label>
+                                        <input type="text" name="nama_menu" class="input-field" value="<?php echo $result_stok['nama_menu'] ?>" readonly>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="stok_trigger">Stok</label>
+                                        <input type="number" name="stok_trigger" class="input-field" inputmode="numeric" onkeypress="return restrictAlphabet(event)">
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="date">Tanggal masuk</label>
+                                        <input type="date" name="date" class="input-field" value="<?php echo date('Y-m-d'); ?>">
+                                    </div>
+                                    <div class="btn-group">
+                                        <input type="submit" name="ubah_stok" value="Simpan Perubahan">
+                                        <input type="submit" name="batal_menu" value="Batalkan">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     <?php } ?>
                 </div>
             </div>
@@ -117,7 +148,7 @@ if (isset($_SESSION["username"])) {
         </html>
 <?php }
 } else {
-    header('location: keluar.php');
+    header("location: /kasir/keluar.php");
 }
 ob_flush();
 ?>

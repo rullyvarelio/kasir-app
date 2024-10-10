@@ -107,12 +107,13 @@ if (isset($_SESSION["username"])) {
                                     </tr>
                                 </thead>
                                 <?php
+                                $no = 1;
                                 $query_user = "SELECT * FROM user JOIN role ON user.id_role = role.id_role";
                                 $sql_user = mysqli_query($koneksi, $query_user);
                                 while ($row_user = mysqli_fetch_array($sql_user)) { ?>
                                     <tbody>
                                         <tr>
-                                            <td><?php echo $row_user["id_user"] ?></td>
+                                            <td><?php echo $no++ ?></td>
                                             <td><?php echo $row_user["nama_lengkap"] ?></td>
                                             <td><?php echo $row_user["nama_role"] ?></td>
                                             <td><?php echo $row_user["status"] ?></td>
