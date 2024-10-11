@@ -3,15 +3,15 @@ include "/xampp/htdocs/kasir/config/database.php";
 session_start();
 ob_start();
 
-$id = $_SESSION["id_user"];
+$id = $_SESSION['id_user'];
 
+if (isset($_SESSION['username'])) {
 
-if (isset($_SESSION["username"])) {
-    $query = "SELECT * FROM user NATURAL JOIN role WHERE id_user = $id";
+    $query = "select * from user natural join role where id_user = $id";
     $sql = mysqli_query($koneksi, $query);
 
-    $direktori = "/kasir/assets/img/menu/";
-    $gambar_menu = $direktori . "no_image.png";
+    $direktori = "/kasir/assets/img/user/";
+    $gambar_user = $direktori . "no_profile.png";
 
     while ($r = mysqli_fetch_array($sql)) {
 ?>
@@ -23,54 +23,42 @@ if (isset($_SESSION["username"])) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="stylesheet" href="/kasir/assets/css/crud.css">
             <link rel="shortcut icon" href="/kasir/assets/img/favicon/favicon.ico" type="image/x-icon">
-            <title>Tambah menu</title>
+            <title>Tambah akun</title>
         </head>
 
         <body>
             <!-- CONTENT -->
             <div class="container">
-
                 <div class="crud">
-                    <h1>Tambah menu</h1>
-                    <form action="/kasir/controllers/menuControllers.php" method="post" enctype="multipart/form-data">
+                    <h1>Buat akun</h1>
+                    <form action="/kasir/controllers/userControllers.php" method="post" enctype="multipart/form-data">
                         <div class="input-group">
-                            <label for="nama_menu">Nama menu</label>
-                            <input type="text" name="nama_menu" class="input-field">
+                            <label for="nama_lengkap">Nama lengkap</label>
+                            <input type="text" name="nama_lengkap" class="input-field">
                         </div>
                         <div class="input-group">
-                            <label for="harga">Harga</label>
-                            <input type="number" name="harga" class="input-field" inputmode="numeric" onkeypress="return restrictAlphabet(event)">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" class="input-field">
                         </div>
                         <div class="input-group">
-                            <label for="stok">Stok</label>
-                            <input type="number" name="stok" class="input-field" inputmode="numeric" onkeypress="return restrictAlphabet(event)">
+                            <label for="password">Password</label>
+                            <input type="text" name="password" class="input-field">
                         </div>
                         <div class="input-group">
-                            <label for="gambar">Gambar</label>
-                            <input type="file" accept="image/*" name="gambar_menu" class="input-field" onchange="preview(this,'previewne')" value="<?php echo $gambar_menu ?>">
-                            <img src="<?php echo $gambar_menu ?>" id="previewne" style="width:110px;"><br>
+                            <label for="gambar_user">Gambar</label>
+                            <input name="gambar_user" type="file" accept="image/*" onchange="preview(this,'previewne')" value="<?php echo $gambar_user ?>" class="input-field">
+                            <img src="<?php echo $gambar_user ?>" id="previewne" style="aspect-ratio: 1/1; width: 100px;">
                         </div>
                         <div class="btn-group">
-                            <input type="submit" name="tambah_menu" value="Tambahkan">
-                            <input type="submit" name="batal_menu" value="Batalkan">
+                            <input type="submit" name="tambah_user" value="Tambahkan">
+                            <input type="submit" name="batal_user" value="Batalkan">
                         </div>
                     </form>
                 </div>
-
             </div>
             <!-- CONTENT -->
 
             <script type="text/javascript">
-                function restrictAlphabet(e) {
-                    var x = e.which || e.keycode;
-                    if (x >= 48 && x <= 57) {
-                        return true
-                    } else {
-                        return false
-                    }
-
-                }
-
                 function preview(gambar, idpreview) {
                     var gb = gambar.files;
 
@@ -91,7 +79,7 @@ if (isset($_SESSION["username"])) {
 
                             reader.readAsDataURL(gbPreview);
                         } else {
-                            alert("Tipe gambar tidak sesuai (.png, .jpg, .jpeg, etc)");
+                            alert("Type file tidak sesuai. Khusus image.");
                         }
 
                     }

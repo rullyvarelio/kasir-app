@@ -62,8 +62,9 @@ if (isset($_SESSION["username"])) {
                             <th>No.</th>
                             <th>Nama lengkap</th>
                             <th>Username</th>
-                            <th>Status</th>
                             <th>Role</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
                         <?php
                         $no = 1;
@@ -76,51 +77,29 @@ if (isset($_SESSION["username"])) {
                                 <td><?php echo $no++ ?></td>
                                 <td><?php echo $r_user["nama_lengkap"] ?></td>
                                 <td><?php echo $r_user["username"] ?></td>
-                                <td><?php echo $r_user["status"] ?></td>
                                 <td><?php echo $r_user["nama_role"] ?></td>
+                                <td><?php echo $r_user["status"] ?></td>
+                                <td>
+                                    <form action="/kasir/controllers/userControllers.php" method="post">
+                                        <button type="submit" value="<?php echo $r_user["id_user"] ?>" name="edit_user">Edit</button>
+                                        <button type="submit" value="<?php echo $r_user["id_user"] ?>" name="hapus_user">Hapus</button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php } ?>
                     </table>
                 </main>
             </section>
 
-            <?php
-            if (isset($_REQUEST["hapus_user"])) {
-                $id_user = $_REQUEST["hapus_user"];
 
-                $query_lihat = "select * from user where id_user = $id_user";
-                $sql_lihat = mysqli_query($koneksi, $query_lihat);
-                $result_lihat = mysqli_fetch_array($sql_lihat);
-
-                if (file_exists("img/user/" . $result_lihat["gambar_user"])) {
-                    unlink("img/user/" . $result_lihat["gambar_user"]);
-                }
-
-                $query_hapus_user = "delete from user where id_user = $id_user";
-                $sql_hapus_user = mysqli_query($koneksi, $query_hapus_user);
-
-                $qid = "alter table user auto_increment = $id_user";
-                mysqli_query($koneksi, $qid);
-
-                if ($sql_hapus_user) {
-                    header("location: karyawan.php");
-                }
-            }
-
-            if (isset($_REQUEST["edit_user"])) {
-                $id_user = $_REQUEST["edit_user"];
-                $_SESSION["edit_user"] = $id_user;
-
-                header("location: buat_user.php");
-            }
-            ?>
+            <script src="/kasir/assets/js/script.js"></script>
         </body>
 
         </html>
 <?php
     }
 } else {
-    header('location: keluar.php');
+    header("location: /kasir/keluar.php");
 }
 ob_flush();
 ?>

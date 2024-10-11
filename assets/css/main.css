@@ -213,7 +213,6 @@ table.karyawan-table {
   scrollbar-width: none;
   border-collapse: separate;
   border-spacing: 0;
-  width: 100%;
 }
 
 table.karyawan-table td,
@@ -288,16 +287,66 @@ main .menu-head a > button:active {
 /* Menu.php */
 
 /* Karyawan.php */
-.user-data {
-  margin-top: 36px;
-  width: 100%;
+table.user-data {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   padding: 20px;
   border-radius: 10px;
   background: var(--light);
-  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.05);
+  margin-top: 36px;
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table.user-data::-webkit-scrollbar {
+  display: none;
+}
+
+table.user-data tr > td,
+table.user-data tr > th {
+  border: 1px solid var(--dark-grey);
+  text-align: left;
+  padding: 10px;
+  text-transform: capitalize;
+}
+
+table.user-data tr > td:nth-child(3) {
+  text-transform: none;
+}
+
+table.user-data tr > td button {
+  color: var(--grey);
+  background-color: var(--dark-blue);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+  text-align: center;
+  margin-right: 10px;
+  transition: all ease-in-out 0.1s;
+}
+
+table.user-data tr > td button:hover {
+  background-color: #180681;
+}
+
+table.user-data tr th:first-child {
+  border-radius: 5px 0 0 0;
+}
+table.user-data tr th:last-child {
+  border-radius: 0 5px 0 0;
+}
+table.user-data:last-child tr:last-child td:first-child {
+  border-radius: 0 0 0 5px;
+}
+table.user-data:last-child tr:last-child td:last-child {
+  border-radius: 0 0 5px 0;
+}
+
+table.user-data tr > td form {
   display: flex;
-  justify-content: space-between;
-  align-items: start;
-  flex-direction: column;
 }
 /* Karyawan.php */

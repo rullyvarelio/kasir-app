@@ -117,3 +117,8 @@ input[type="file"]::file-selector-button {
   border: none;
   cursor: pointer;
 }
+
+.flex-role {
+  display: flex;
+  justify-content: space-evenly;
+}

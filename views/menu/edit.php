@@ -148,7 +148,7 @@ if (isset($_SESSION["username"])) {
         </html>
 <?php }
 } else {
-    header("location: /kasir/keluar.php");
+    header("location: /xampp/htdocs/kasir/keluar.php");
 }
 ob_flush();
 ?>
