@@ -89,8 +89,9 @@ if (isset($_SESSION["username"])) {
                         <?php } ?>
                     </table>
                 </main>
+                <!-- MAIN -->
             </section>
-
+            <!-- CONTENT -->
 
             <script src="/kasir/assets/js/script.js"></script>
         </body>

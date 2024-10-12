@@ -24,6 +24,7 @@ html {
 body {
   background: var(--grey);
   overflow-x: hidden;
+  height: 100vh;
 }
 
 a {
@@ -120,7 +121,6 @@ main .title {
 }
 
 main .info-data {
-  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-gap: 20px;
@@ -244,20 +244,25 @@ table.karyawan-table tbody:last-child tr:last-child td:last-child {
     position: relative;
     width: calc(100% - 60px);
     transition: all 0.3s ease;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .order-container {
+    flex-direction: column;
+    row-gap: 2em;
+    overflow-y: auto;
   }
 }
 
 /* Menu.php */
-main.menu-head {
-  display: flex;
-  flex-direction: row;
-}
 
 main .menu-head {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 36px;
 }
 
 main .menu-head a > button {
@@ -283,6 +288,7 @@ main .menu-head a > button:active {
 
 .info-data.center {
   align-items: center;
+  width: 100%;
 }
 /* Menu.php */
 
@@ -350,3 +356,92 @@ table.user-data tr > td form {
   display: flex;
 }
 /* Karyawan.php */
+
+/* Order.php */
+.cart {
+  border: none;
+  border-radius: 5px;
+  background-color: #06c406;
+  margin-top: 5px;
+  transition: all ease-in-out 0.1s;
+}
+
+.cart i {
+  color: var(--grey);
+  font-size: 20px;
+}
+
+.cart:hover {
+  background-color: #048f04;
+}
+
+.cart.after {
+  background-color: #bb0000;
+  cursor: not-allowed;
+}
+
+.order-list {
+  max-width: 500px;
+  width: 100%;
+  background: var(--light);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-top: 2em;
+}
+
+.order-container {
+  display: flex;
+  column-gap: 1.5em;
+  justify-content: space-between;
+  align-items: top;
+}
+
+.keranjang {
+  width: 100%;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 10px;
+  height: fit-content;
+  background: var(--light);
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+table.draft_order {
+  table-layout: fixed;
+  margin-top: 1em;
+  text-align: left;
+}
+
+table.draft_order input[type="text"] {
+  width: 100%;
+}
+
+table.draft_order button {
+  padding: 2px;
+}
+
+.bottom-row {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.process-order {
+  border: none;
+  border-radius: 10px;
+  padding: 0.5em 1em;
+  font-weight: bold;
+  background-color: var(--blue);
+  color: var(--light);
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+}
+
+.process-order:hover {
+  background-color: var(--dark-blue);
+}
+
+.process-order:active {
+  transform: scale(0.95);
+}
+/* Order.php */

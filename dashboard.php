@@ -69,7 +69,9 @@ if (isset($_SESSION["username"])) {
 
                 <!-- MAIN -->
                 <main>
-                    <h1 class="title"><?php echo $page_name ?></h1>
+                    <div class="menu-head">
+                        <h1 class="title"><?php echo $page_name ?></h1>
+                    </div>
                     <div class="info-data">
                         <div class="card">
                             <h2><?php echo $result_order["order_count"] ?></h2>
