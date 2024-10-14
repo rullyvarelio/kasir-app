@@ -32,7 +32,7 @@ if (isset($_SESSION["username"])) {
 
                 <div class="crud">
                     <h1>Tambah menu</h1>
-                    <form action="/kasir/controllers/menuControllers.php" method="post" enctype="multipart/form-data">
+                    <form action="/kasir/controllers/menuController.php" method="post" enctype="multipart/form-data">
                         <div class="input-group">
                             <label for="nama_menu">Nama menu</label>
                             <input type="text" name="nama_menu" class="input-field">

@@ -80,7 +80,7 @@ if (isset($_SESSION["username"])) {
                                 <td><?php echo $r_user["nama_role"] ?></td>
                                 <td><?php echo $r_user["status"] ?></td>
                                 <td>
-                                    <form action="/kasir/controllers/userControllers.php" method="post">
+                                    <form action="/kasir/controllers/userController.php" method="post">
                                         <button type="submit" value="<?php echo $r_user["id_user"] ?>" name="edit_user">Edit</button>
                                         <button type="submit" value="<?php echo $r_user["id_user"] ?>" name="hapus_user">Hapus</button>
                                     </form>

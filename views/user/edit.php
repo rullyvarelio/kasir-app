@@ -42,7 +42,7 @@ if (isset($_SESSION['username'])) {
             <div class="container">
                 <div class="crud">
                     <h1>Update akun</h1>
-                    <form action="/kasir/controllers/userControllers.php" method="post" enctype="multipart/form-data">
+                    <form action="/kasir/controllers/userController.php" method="post" enctype="multipart/form-data">
                         <div class="input-group">
                             <label for="nama_lengkap">Nama lengkap</label>
                             <input type="text" name="nama_lengkap" class="input-field" value="<?php echo $nama_lengkap ?>" readonly>

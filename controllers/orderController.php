@@ -35,18 +35,18 @@ if (isset($_POST["hapus_pesan"])) {
     }
 }
 
-if (isset($_POST['proses_pesan'])) {
-    $id_pengunjung = $id;
-    $total_harga = $_POST['total_harga'];
+if (isset($_POST["proses_pesan"])) {
+    $staff = $id;
+    $total_harga = $_POST["total_harga"];
     $uang_bayar = '';
     $uang_kembali = '';
-    $status_order = 'belum bayar';
+    $status_order = "belum bayar";
 
     date_default_timezone_set('Asia/Jakarta');
     $time = Date('YmdHis');
     echo $time;
 
-    $query_simpan_order = "INSERT INTO pesanan VALUES('', '$id_pengunjung', $time, '$total_harga', '$uang_bayar', '$uang_kembali', '$status_order')";
+    $query_simpan_order = "INSERT INTO pesanan VALUES('', '$staff', $time, '$total_harga', '$uang_bayar', '$uang_kembali', '$status_order')";
     $sql_simpan_order = mysqli_query($koneksi, query: $query_simpan_order);
 
     // Fetch the id of the newly inserted order
@@ -57,18 +57,18 @@ if (isset($_POST['proses_pesan'])) {
 
     while ($r_payment = mysqli_fetch_array($sql_payment)) {
         $id_menu_payment = $r_payment["id_menu"];
-        $tempe = $_POST["jumlah" . $id_menu_payment];
+        $jumlah_payment = $_POST["jumlah" . $id_menu_payment];
         $id_pesan = $r_payment["id_transaksi"];
 
         $query_stok = "SELECT * FROM menu WHERE id_menu = $id_menu_payment";
         $sql_stok = mysqli_query($koneksi, $query_stok);
         $result_stok = mysqli_fetch_array($sql_stok);
-        $sisa_stok = $result_stok["stok"] - $tempe;
+        $sisa_stok = $result_stok["stok"] - $jumlah_payment;
 
-        $query_proses_ubah = "UPDATE transaksi SET jumlah = $tempe, id_order = $id_order WHERE id_menu = $id_menu_payment AND id_user = $id AND status_transaksi = 'belum selesai'";
+        $query_proses_ubah = "UPDATE transaksi SET jumlah = $jumlah_payment, id_order = $id_order WHERE id_menu = $id_menu_payment AND id_user = $id AND status_transaksi = 'belum selesai'";
         $query_kurangi_stok = "UPDATE menu SET stok = $sisa_stok WHERE id_menu = $id_menu_payment";
 
-        $query_kelola_stok = "UPDATE stok_out SET jumlah_terjual = $tempe WHERE id_transaksi = $id_pesan";
+        $query_kelola_stok = "UPDATE stok_out SET jumlah_terjual = $jumlah_payment WHERE id_transaksi = $id_pesan";
 
         $sql_kelola_stok = mysqli_query($koneksi, $query_kelola_stok);
         $sql_kurangi_stok = mysqli_query($koneksi, $query_kurangi_stok);
@@ -79,7 +79,7 @@ if (isset($_POST['proses_pesan'])) {
     $sql_ubah_status = mysqli_query($koneksi, $query_ubah_status);
 
     if ($sql_simpan_order) {
-        header('location: /kasir/views/order.php');
+        header("location: /kasir/views/order.php");
     }
 }
 

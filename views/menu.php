@@ -73,7 +73,7 @@ if (isset($_SESSION["username"])) {
                         ?>
                             <div class="card">
                                 <?php if ($r["id_role"] == 1) { ?>
-                                    <form action="/kasir/controllers/menuControllers.php" method="post" class="more">
+                                    <form action="/kasir/controllers/menuController.php" method="post" class="more">
                                         <i class="bx bx-dots-horizontal-rounded more-ic"></i>
                                         <ul class="dropdown more-link">
                                             <li>

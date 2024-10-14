@@ -52,7 +52,7 @@ if (isset($_SESSION["username"])) {
                 <div class="crud">
                     <?php if (isset($_SESSION["edit_menu"])) { ?>
                         <h1>Update menu</h1>
-                        <form action="/kasir/controllers/menuControllers.php" method="post" enctype="multipart/form-data">
+                        <form action="/kasir/controllers/menuController.php" method="post" enctype="multipart/form-data">
                             <div class="input-group">
                                 <label for="nama_menu">Nama menu</label>
                                 <input type="text" name="nama_menu" class="input-field" value="<?php echo $nama_menu ?>">
@@ -80,7 +80,7 @@ if (isset($_SESSION["username"])) {
                         <div class="container">
                             <div class="crud">
                                 <h1>Update stok</h1>
-                                <form action="/kasir/controllers/menuControllers.php" method="post" enctype="multipart/form-data">
+                                <form action="/kasir/controllers/menuController.php" method="post" enctype="multipart/form-data">
                                     <div class="input-group">
                                         <label for="nama_menu">Nama menu</label>
                                         <input type="text" name="nama_menu" class="input-field" value="<?php echo $result_stok['nama_menu'] ?>" readonly>

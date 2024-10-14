@@ -1,124 +1,144 @@
 @import url(main.css);
 
+table tr > th {
+	text-align: start;
+}
+
 .container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
 }
 
 .container .crud {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 500px;
-  background-color: #fff;
-  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.05);
-  border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 500px;
+	height: fit-content;
+	max-height: 600px;
+	overflow-y: auto;
+	background-color: #fff;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.05);
+	border-radius: 10px;
 }
 
 .container .crud h1 {
-  font-weight: 700;
-  font-size: 1.25rem;
-  padding: 1rem 1.5rem;
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+	font-weight: 700;
+	font-size: 1.25rem;
+	padding: 1rem 1.5rem;
+	border-bottom: 1px solid #ddd;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-.container .crud form {
-  padding: 1rem;
+.container .crud form,
+.info-menu {
+	padding: 1rem;
 }
 
 form .input-group {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .input-group + .input-group {
-  margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 .input-group label {
-  font-weight: 700;
-  font-size: 0.875rem;
+	font-weight: 700;
+	font-size: 0.875rem;
 }
 
 #previewne {
-  width: 130px;
-  aspect-ratio: 16 / 9;
-  margin-top: 10px;
+	width: 130px;
+	aspect-ratio: 16 / 9;
+	margin-top: 10px;
 }
 
 .input-field {
-  display: block;
-  margin-top: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 0.25rem;
-  padding: 0.75rem 0.75rem;
-  transition: 0.15s ease;
+	display: block;
+	margin-top: 0.5rem;
+	border: 1px solid #ddd;
+	border-radius: 0.25rem;
+	padding: 0.75rem 0.75rem;
+	transition: 0.15s ease;
 }
 
 .input-field:focus {
-  outline: none;
-  border-color: #007dab;
-  box-shadow: 0 0 0 1px #007dab, 0 0 0 4px rgba(0, 125, 171, 0.25);
+	outline: none;
+	border-color: #007dab;
+	box-shadow: 0 0 0 1px #007dab, 0 0 0 4px rgba(0, 125, 171, 0.25);
 }
 
 .btn-group {
-  padding: 1.5rem 1.5rem;
+	padding: 1.5rem 1.5rem;
 }
 
-.btn-group input[type="submit"] {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.15s ease;
-  appearance: none;
-  font: inherit;
-  border: none;
-  background: none;
-  cursor: pointer;
-  background-color: #007dab;
-  color: #fff;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.25rem;
-  font-weight: 500;
-  font-size: 0.875rem;
+.btn-group input[type="submit"],
+.btn-group button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.15s ease;
+	appearance: none;
+	font: inherit;
+	border: none;
+	background: none;
+	cursor: pointer;
+	background-color: #007dab;
+	color: #fff;
+	padding: 0.75rem 1.25rem;
+	border-radius: 0.25rem;
+	font-weight: 500;
+	font-size: 0.875rem;
 }
 
-.btn-group input[type="submit"]:hover {
-  background-color: #006489;
+.btn-group input[type="submit"]:hover,
+.btn-group button {
+	background-color: #006489;
 }
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 /* Firefox */
 input[type="number"] {
-  -moz-appearance: textfield;
+	-moz-appearance: textfield;
 }
 
 input[type="file"]::file-selector-button {
-  padding: 0.8rem 1rem;
-  margin: -0.8rem -1rem;
-  margin-inline-end: 1rem;
-  border: none;
-  cursor: pointer;
+	padding: 0.8rem 1rem;
+	margin: -0.8rem -1rem;
+	margin-inline-end: 1rem;
+	border: none;
+	cursor: pointer;
 }
 
 .flex-role {
-  display: flex;
-  justify-content: space-evenly;
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.bottom-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.info-menu table {
+	width: 100%;
 }
