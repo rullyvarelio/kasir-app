@@ -126,7 +126,7 @@ if (isset($_SESSION["username"])) {
 										</td>
 										<td class="action">
 											<form action="/kasir/controllers/transactionController.php" method="post">
-												<a target="_blank" href="print_struk.php?konten=<?php echo $r_sudah_order['id_order']; ?>">
+												<a target="_blank" href="/kasir/print_struk.php?konten=<?php echo $r_sudah_order['id_order']; ?>">
 													<i class="bx bxs-printer icon"></i>
 												</a>
 												<i class="bx bx-dots-vertical-rounded more-ic"></i>
@@ -145,14 +145,15 @@ if (isset($_SESSION["username"])) {
 						</div>
 					</div>
 				</main>
-
-				<script src="/kasir/assets/js/script.js"></script>
+				<!-- MAIN -->
+			</section>
+			<!-- CONTENT -->
+			<script src="/kasir/assets/js/script.js"></script>
 
 		</body>
 
 		</html>
-<?php
-	}
+<?php }
 } else {
 	header("location: /kasir/keluar.php");
 }
