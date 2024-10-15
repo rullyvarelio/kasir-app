@@ -239,27 +239,6 @@ table.karyawan-table tbody:last-child tr:last-child td:last-child {
 /* MAIN */
 /* CONTENT */
 
-@media screen and (max-width: 768px) {
-	#content {
-		position: relative;
-		width: calc(100% - 60px);
-		transition: all 0.3s ease;
-		overflow-y: auto;
-		height: 100vh;
-	}
-
-	.order-container {
-		flex-direction: column;
-		row-gap: 2em;
-		overflow-y: auto;
-	}
-
-	.transaction {
-		flex-direction: column;
-		row-gap: 2em;
-	}
-}
-
 /* Menu.php */
 
 main .menu-head {
@@ -426,7 +405,6 @@ table.draft_order button {
 }
 
 .bottom-row {
-	margin-top: 10px;
 	font-weight: bold;
 }
 
@@ -491,4 +469,96 @@ table.draft_order button {
 .action .more-link {
 	width: fit-content;
 }
+
+.info {
+	padding: 20px;
+	border-radius: 10px;
+	background: var(--light);
+	width: fit-content;
+	max-width: 100%;
+	box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.info .table-info {
+	width: 550px;
+	max-width: 100%;
+	border-collapse: collapse;
+}
+
+.info .table-info tr > th,
+.info .table-info tr > td {
+	text-align: start;
+	border: 1px solid black;
+	padding: 0.5em 0 0.5em 0.5em;
+}
+
+.top-row,
+.bottom-row {
+	border: 1px solid black;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5em;
+}
+
+.bottom-row {
+	border-top: none;
+	margin-bottom: 1em;
+}
+
+.top-row {
+	border-bottom: none;
+}
+
+.primary-btn {
+	padding: 0.5rem 1rem;
+	font-size: 1em;
+	display: flex;
+	align-items: center;
+	border: none;
+	justify-content: space-between;
+	border-radius: 10px;
+	background-color: var(--grey);
+	color: var(--dark-blue);
+	column-gap: 10px;
+	cursor: pointer;
+	font-weight: bold;
+	transition: all ease-in-out 0.1s;
+}
+
+.primary-btn:active {
+	transform: scale(0.95);
+}
+
 /* Transaksi.php */
+
+@media screen and (max-width: 768px) {
+	#content {
+		position: relative;
+		width: calc(100% - 60px);
+		transition: all 0.3s ease;
+		overflow-y: auto;
+		height: 100vh;
+	}
+
+	.order-container {
+		flex-direction: column;
+		row-gap: 2em;
+		overflow-y: auto;
+	}
+
+	.transaction {
+		flex-direction: column;
+		row-gap: 2em;
+	}
+
+	.info {
+		width: max-content;
+	}
+
+	.info .table-info tr > th {
+		text-align: center;
+		padding: 0.5em 0;
+	}
+}

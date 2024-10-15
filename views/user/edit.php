@@ -33,7 +33,6 @@ if (isset($_SESSION['username'])) {
             <meta charset="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <link rel="stylesheet" href="/kasir/assets/css/crud.css">
-            <link rel="shortcut icon" href="/kasir/assets/img/favicon/favicon.ico" type="image/x-icon">
             <title>Tambah akun</title>
         </head>
 

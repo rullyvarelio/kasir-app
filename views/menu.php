@@ -35,7 +35,6 @@ if (isset($_SESSION["username"])) {
             <link rel="stylesheet" href="/kasir/assets/css/sidebar.css">
             <link rel="stylesheet" href="/kasir/assets/css/navbar.css">
             <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
-            <link rel="shortcut icon" href="/kasir/assets/img/favicon/favicon.ico" type="image/x-icon">
             <title><?php echo ucfirst($page_name) ?></title>
         </head>
 
